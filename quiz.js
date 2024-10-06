@@ -12,8 +12,13 @@ function checkAnswer() {
         return;
     }
 
-    // Create a feedback message based on the user's answer
-    const feedbackMessage = userAnswer.value === correctAnswer 
+    // Function to compare the user's answer with the correct answer
+    function isCorrect(answer) {
+        return answer === correctAnswer;
+    }
+
+    // Determine the feedback based on the user's answer
+    const feedbackMessage = isCorrect(userAnswer.value) 
         ? "Correct! Well done." 
         : "That's incorrect. Try again!";
     
@@ -23,5 +28,6 @@ function checkAnswer() {
 
 // Add an event listener to the "Submit Answer" button
 document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+
 
 
