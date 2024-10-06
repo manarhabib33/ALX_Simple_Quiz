@@ -12,14 +12,16 @@ function checkAnswer() {
         return;
     }
 
-    // Compare the user's answer with the correct answer
-    if (userAnswer.value === correctAnswer) {
-        document.getElementById("feedback").textContent = "Correct! Well done.";
-    } else {
-        document.getElementById("feedback").textContent = "That's incorrect. Try again!";
-    }
+    // Create a feedback message based on the user's answer
+    const feedbackMessage = userAnswer.value === correctAnswer 
+        ? "Correct! Well done." 
+        : "That's incorrect. Try again!";
+    
+    // Update the feedback element
+    document.getElementById("feedback").textContent = feedbackMessage;
 }
 
 // Add an event listener to the "Submit Answer" button
 document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+
 
