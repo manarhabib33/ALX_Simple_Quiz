@@ -1,42 +1,52 @@
-// Get the elements from the HTML
-var number1Input = document.getElementById('number1');
-var number2Input = document.getElementById('number2');
-var resultDisplay = document.getElementById('calculation-result');
-
-// Function to add two numbers
-function add() {
-    var number1 = parseFloat(number1Input.value) || 0;
-    var number2 = parseFloat(number2Input.value) || 0;
-    resultDisplay.textContent = number1 + number2; // Display result directly
+// Function to perform addition
+function add(number1, number2) {
+    return number1 + number2; // Ensuring the 'return' is present
 }
 
-// Function to subtract two numbers
-function subtract() {
-    var number1 = parseFloat(number1Input.value) || 0;
-    var number2 = parseFloat(number2Input.value) || 0;
-    resultDisplay.textContent = number1 - number2; // Display result directly
+// Function to perform subtraction
+function subtract(number1, number2) {
+    return number1 - number2;
 }
 
-// Function to multiply two numbers
-function multiply() {
-    var number1 = parseFloat(number1Input.value) || 0;
-    var number2 = parseFloat(number2Input.value) || 0;
-    resultDisplay.textContent = number1 * number2; // Display result directly
+// Function to perform multiplication
+function multiply(number1, number2) {
+    return number1 * number2;
 }
 
-// Function to divide two numbers
-function divide() {
-    var number1 = parseFloat(number1Input.value) || 0;
-    var number2 = parseFloat(number2Input.value) || 0;
+// Function to perform division
+function divide(number1, number2) {
     if (number2 === 0) {
-        resultDisplay.textContent = "Cannot divide by zero"; // Handle division by zero
-    } else {
-        resultDisplay.textContent = number1 / number2; // Display result directly
+        return 'Cannot divide by zero'; // Handling division by zero
     }
+    return number1 / number2;
 }
 
-// Add event listeners to buttons
-document.getElementById('add').addEventListener('click', add);
-document.getElementById('subtract').addEventListener('click', subtract);
-document.getElementById('multiply').addEventListener('click', multiply);
-document.getElementById('divide').addEventListener('click', divide);
+// Event listeners for each button
+document.getElementById('add').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = add(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
+});
+
+document.getElementById('subtract').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = subtract(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
+});
+
+document.getElementById('multiply').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = multiply(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
+});
+
+document.getElementById('divide').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = divide(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
+});
+
