@@ -3,16 +3,19 @@ function checkAnswer() {
     // Declare the correct answer
     const correctAnswer = "4";
 
-    // Get the user's selected answer
-    const userAnswer = document.querySelector('input[name="quiz"]:checked');
+    // Get the user's selected answer (element)
+    const userAnswerElement = document.querySelector('input[name="quiz"]:checked');
 
     // Get the feedback element to display results
     const feedback = document.getElementById('feedback');
 
     // Check if the user selected an answer
-    if (userAnswer) {
+    if (userAnswerElement) {
+        // Get the value of the selected answer
+        const userAnswer = userAnswerElement.value;
+
         // Compare user's answer to the correct answer
-        if (userAnswer.value === correctAnswer) {
+        if (userAnswer === correctAnswer) {
             feedback.textContent = "Correct! Well done.";
             feedback.style.color = "green"; // Optional: add color to feedback
         } else {
@@ -27,7 +30,3 @@ function checkAnswer() {
 
 // Add event listener to the submit button
 document.getElementById('submit-answer').addEventListener('click', checkAnswer);
-
-
-
-
