@@ -1,32 +1,32 @@
-// Function to check the answer
+// Function to check the user's answer
 function checkAnswer() {
     // Declare the correct answer
     const correctAnswer = "4";
 
-    // Retrieve the user's selected answer
+    // Get the user's selected answer
     const userAnswer = document.querySelector('input[name="quiz"]:checked');
 
-    // Check if an answer is selected
-    if (!userAnswer) {
-        document.getElementById("feedback").textContent = "Please select an answer!";
-        return;
+    // Get the feedback element to display results
+    const feedback = document.getElementById('feedback');
+
+    // Check if the user selected an answer
+    if (userAnswer) {
+        // Compare user's answer to the correct answer
+        if (userAnswer.value === correctAnswer) {
+            feedback.textContent = "Correct! Well done.";
+            feedback.style.color = "green"; // Optional: add color to feedback
+        } else {
+            feedback.textContent = "That's incorrect. Try again!";
+            feedback.style.color = "red"; // Optional: add color to feedback
+        }
+    } else {
+        feedback.textContent = "Please select an answer!";
+        feedback.style.color = "orange"; // Optional: add color to feedback
     }
-
-    // Use an array to handle feedback messages based on a boolean condition
-    const feedbackMessages = [
-        "That's incorrect. Try again!",
-        "Correct! Well done."
-    ];
-
-    // Compare userAnswer.value with correctAnswer using a logical expression
-    const isAnswerCorrect = userAnswer.value === correctAnswer; // this line uses comparison without an if statement
-
-    // Update the feedback element based on the comparison
-    document.getElementById("feedback").textContent = feedbackMessages[+isAnswerCorrect];
 }
 
-// Add an event listener to the "Submit Answer" button
-document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+// Add event listener to the submit button
+document.getElementById('submit-answer').addEventListener('click', checkAnswer);
 
 
 
